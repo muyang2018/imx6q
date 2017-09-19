@@ -1,0 +1,38 @@
+root@freescale /my$ insmod buzzer_test.ko 
+ -- pwm_init
+ 
+ -- pwm_request_1 success
+
+ 
+Unable to handle kernel NULL pointer dereference at virtual address 00000014
+pgd = ba074000
+[00000014] *pgd=4f8f0831, *pte=00000000, *ppte=00000000
+Internal error: Oops: 17 [#1] PREEMPT SMP
+Modules linked in: buzzer_test(+)
+CPU: 2    Not tainted  (3.0.35-2666-gbdde708 #3)
+PC is at pwm_config+0x28/0x150
+LR is at pwm_init+0x44/0xe8 [buzzer_test]
+pc : [<80065e58>]    lr : [<7f002044>]    psr: 20000013
+sp : bfc67e88  ip : 00000001  fp : 800a5144
+r10: 7f002000  r9 : 7f000394  r8 : 00000001
+r7 : 00000000  r6 : fffffff0  r5 : bfc66000  r4 : 0007a120
+r3 : 00000001  r2 : 0007a120  r1 : 00000000  r0 : fffffff0
+Flags: nzCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment user
+Control: 10c53c7d  Table: 4a07404a  DAC: 00000015
+Process insmod (pid: 3284, stack limit = 0xbfc662f0)
+Stack: (0xbfc67e88 to 0xbfc68000)
+7e80:                   7f0004d4 bfc66000 00000001 00000000 00000001 7f000394
+7ea0: 7f002000 7f002044 80af3e80 8003c4e8 00000001 800ebdc8 8bf44de0 7f002000
+7ec0: 80000013 8050bd94 00000002 ba26fa40 00000000 800a7b80 00000001 7f000394
+7ee0: 7f0003dc 00000001 ba1c55c0 00000001 7f000394 800a505c 800a5144 800a7338
+7f00: 7f0003a0 2ab0b000 00000000 00000124 00000000 000a7008 7f0004c0 7f0003a0
+7f20: 0000dc12 c0af8000 0000167e c0af8b08 c0af89c1 c0af9548 ba1c5500 000004d8
+7f40: 00000558 00000000 00000000 0000001d 0000001e 00000015 00000012 00000010
+7f60: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 80a49d24
+7f80: 00000003 0000167e 7ed72dd4 7ed72eda 00000080 80042144 bfc66000 00000000
+7fa0: 00000000 80041fc0 0000167e 7ed72dd4 000a7018 0000167e 000a7008 7ed72eda
+7fc0: 0000167e 7ed72dd4 7ed72eda 00000080 000001de 00000000 2ab0b000 00000000
+7fe0: 7ed72c10 7ed72c00 0001a32c 2acf0490 60000010 000a7018 00000000 00000000
+[<80065e58>] (pwm_config+0x28/0x150) from [<7f002044>] (pwm_init+0x44/0xe8 [buzzer_test])
+[<7f002044>] (pwm_init+0x44/0xe8 [buzzer_test]) from [<8003c4e8>] (do_one_initcall+0x34/0x174)
+[<8003c4e8>] (do_one_initcall+0x34/0x174) from [<800a7338>]
